@@ -1,0 +1,239 @@
+
+⦁	Classes : Create student class having stdID , stdName, stdClass and display the information of two objects
+
+
+package Day2Assignment;
+
+
+public class Student {
+
+	
+	int stdID;
+	String stdName;
+	int stdClass;
+	
+	
+	//constructor parameter
+	
+	Student( int id,String name,int c){
+		this.stdID=id;
+		this.stdName=name;
+		this.stdClass=c;
+		
+		}
+	
+	
+	public void display()
+	{
+		System.out.println(stdID);
+		System.out.println(stdName);
+		System.out.println(stdClass);
+	}
+	
+	public static void main(String arg[]) {
+		Student s1 = new Student(1,"Blake",5);
+		s1.display();
+		
+
+		Student s2 = new Student(2,"Clark",10);
+		s2.display();
+	}
+	
+	
+	
+		
+}
+
+
+
+
+⦁	Create a product class The properties are ProID, ProName, ProPrice display the information and ProPrice will be added additional tax of GST .
+
+package Day2Assignment;
+
+public class Product {
+
+	int ProID;
+	String ProName;
+	double ProPrice;
+	
+	Product( int id,String name,double price){
+		this.ProID=id;
+		this.ProName=name;
+		this.ProPrice=price;
+		
+	}
+	public void display()
+	{
+		System.out.println(ProID);
+		System.out.println(ProName);
+		System.out.println(ProPrice);
+		
+	}
+	public double tax(double GST) {
+		return this.ProPrice + GST;
+	}
+	public static void main(String arg[]) {
+		Product s1 = new Product(143,"Bottle",100);
+		s1.display();
+		System.out.println(s1.tax(10));
+	}
+}
+
+
+⦁	Create a T-Shirt  class with the following fields.
+String color
+String material
+String design
+Create three instances of object based on different sizes like small, large ,  xtra-large.
+
+
+
+package Day2Assignment;
+
+public class TShirt {
+	 
+	String color;
+	String material;
+	String design;
+	
+public TShirt(String color,String material, String design) {
+    this.color=color;
+    this.material=material;
+    this.design=design;
+}
+public void display()
+{
+	System.out.println(color);
+	System.out.println(material);
+	System.out.println(design);
+}
+
+
+
+
+public static void main(String args[]) {
+	TShirt a=new TShirt("red","cotton","small");
+	a.display();
+	TShirt b=new TShirt("red","cotton","large");
+	b.display();
+	TShirt c=new TShirt("red","cotton","xtra large");
+	c.display();
+
+}
+}
+
+
+Inheritance assignment :
+Create a project called as  "MyOwnAutoShopProject" as following:
+⦁	Create a super class called Car.  The Car class has the following fields and methods.
+⦁	int speed;
+⦁	double regularPrice;
+⦁	String color;
+⦁	double getSalePrice();
+
+package Day2Assignment;
+
+public class Car {
+	private int speed;
+	 private double regularPrice;
+	 private String color;
+
+	 public Car(int speed, double regularPrice, String color) {
+	 this.speed = speed;
+	 this.regularPrice = regularPrice;
+	 this.color = color;
+	 }
+
+	 public double getSalePrice() {
+	 return regularPrice;
+	 }
+	}
+
+
+⦁	Create a subclass of Car class and name it as Truck.  The Truck class has the following fields and methods.
+⦁	int weight;
+⦁	double getSalePrice();  // If weight > 2000, 10% discount. Otherwise, 20% discount.
+
+package Day2Assignment;
+
+public class Truck extends Car {
+	private int weight;
+
+	 public Truck(int speed, double regularPrice, String color, int weight) {
+	 super(speed, regularPrice, color);
+	 this.weight = weight;
+	 }
+
+	 public double getSalePrice() {
+	 return super.getSalePrice() * (weight > 2000 ? 0.90 : 0.80);
+	 }
+	}
+	
+	
+⦁	Create a subclass of Car class and name it as Ford.  The Ford class has the following fields and methods
+⦁	int year;
+⦁	int manufacturerDiscount;
+⦁	double getSalePrice();  // From the sale price computed from Car class, subtract the manufacturerDiscount.
+
+package Day2Assignment;
+
+public class Ford extends Car {
+	private int year;
+	 public int manufacturerDiscount;
+
+	 public Ford(int speed, double regularPrice, String color, int year, int manufacturerDiscount) {
+	 super(speed, regularPrice, color);
+	 this.year = year;
+	 this.manufacturerDiscount = manufacturerDiscount;
+	 }
+
+	 public double getSalePrice() {
+	 return super.getSalePrice() - manufacturerDiscount;
+	 }
+	}
+
+
+⦁	Create a subclass of Car class and name it as Sedan. The Sedan class has the following fields and methods.
+⦁	int length;
+⦁	double getSalePrice();  // If length > 20 feet, 5% discount, Otherwise, 10% discount.
+
+package Day2Assignment;
+
+public class Sedan extends Car {
+
+	private int length;
+
+	 public Sedan(int speed, double regularPrice, String color, int length) {
+	 super(speed, regularPrice, color);
+	 this.length = length;
+	 }
+
+	 public double getSalePrice() {
+	 return super.getSalePrice() * (length > 20 ? 0.95 : 0.90);
+	 }
+}
+
+
+		}
+
+⦁	Create MyOwnAutoShop class which contains the main() method.  Perform the following within the main() method.
+⦁	Create an instance of Sedan class and initialize all the fields with appropriate values.  Use super(...) method in the constructor for initializing the fields of the super class.
+⦁	Create two instances of the Ford class and initialize all the fields with appropriate values.  Use super(...) method in the constructor for initializing the fields of the super class.
+⦁	Create an instance of Car class and and initialize all the fields with appropriate values.
+⦁	Display the sale prices of all instance.
+
+
+package Day2Assignment;
+
+public class MyShop {
+	public static void main(String[] args) {
+		 Sedan sedan = new Sedan(500, 500, "red", 30);
+		 Ford fordOne = new Ford(300, 300, "black", 2021, 35);
+		 Ford fordTwo = new Ford(250, 250, "yellow", 2020, 40);
+		 Car car = new Car(100, 100, "white");
+		 System.out.println("sedan "+sedan.getSalePrice());
+		 System.out.println("fordOne "+fordOne.getSalePrice());
+		 System.out.println("fordTwo "+fordTwo.getSalePrice());
+		 System.out.println("car "+car.getSalePrice());
+		 }

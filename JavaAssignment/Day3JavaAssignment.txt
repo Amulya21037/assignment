@@ -1,0 +1,227 @@
+1) 
+
+package Day3Assignment;
+
+public class Employee {
+	int empId;
+	String empName;
+	double empSal;
+	public Employee() {}
+	public Employee(int id,String name,double sal) {
+		id= empId;
+		name= empName;
+		sal=empSal;
+
+}
+}
+
+package Day3Assignment;
+
+public interface EmpInterface {
+	public double SalCal(double ta,double hra,double da); 
+		public void display();
+	}
+	
+	
+	package Day3Assignment;
+
+public class Manager extends Employee implements EmpInterface {
+	
+	@Override
+	public double SalCal(double ta, double hra, double da) {
+		//TODO Auto-generated method stub
+		return this.empSal+ta+hra+da;
+	}
+	
+	@Override
+	public void display() {
+		//TODO Auto-generated method stub
+		System.out.println(this.empId);
+		System.out.println(this.empName);
+		System.out.println(this.empSal);
+		
+	}
+
+	public static void main(String args[]) {
+		Manager m1 = new Manager();
+		m1.empId = 101;
+		m1.empName= "sam";
+		m1.empSal= 7890;
+		m1.display();
+		System.out.println(m1.SalCal(10,20,30));
+	}
+}
+
+
+package Day3Assignment;
+
+public class Developer extends Employee implements EmpInterface{
+	@Override
+	public double SalCal(double ta,double hra,double da) {
+		// TODO Auto-generated method stub
+		return this.empSal+ta+hra+da;
+	}
+@Override
+public void display() {
+	// TODO Auto-generated method stub
+	System.out.println(this.empId);
+	System.out.println(this.empName);
+	System.out.println(this.empSal);
+}
+
+public static void main(String args[]) {
+	Developer d1=new Developer();
+	d1.empId=103;
+	d1.empName="Blake";
+	d1.empSal=30000;
+	d1.display();
+	System.out.println(d1.SalCal(10,20,30));
+	
+}
+}
+
+
+
+package Day3Assignment;
+
+public class Tester extends Employee implements EmpInterface{
+	@Override
+	public double SalCal(double ta,double hra,double da) {
+		// TODO Auto-generated method stub
+		return this.empSal+ta+hra+da;
+	}
+@Override
+public void display() {
+	// TODO Auto-generated method stub
+	System.out.println(this.empId);
+	System.out.println(this.empName);
+	System.out.println(this.empSal);
+}
+
+public static void main(String args[]) {
+	Developer d1=new Developer();
+	d1.empId=102;
+	d1.empName="Clark";
+	d1.empSal=40000;
+	d1.display();
+	System.out.println(d1.SalCal(10,20,30));
+	
+}
+}
+
+
+
+
+	
+2)
+	package Day3Assignment;
+
+public class Shape {
+float length;
+float width;
+float height;
+
+
+public Shape() {};
+ public Shape(float len, float wi, float he) {
+ this.length=len;
+ this.width=wi;
+ this.height=he;
+}
+}
+
+package Day3Assignment;
+
+public interface Shape_Interface {
+	public float area(float len,float wi,float he);
+}
+
+
+package Day3Assignment;
+
+public class Rectangle extends Shape implements Shape_Interface{
+	
+	Rectangle(){};
+	
+	@Override
+	public float area(float len,float wi,float he) {
+		return len*wi;
+	}
+
+	public static void main(String args[]) {
+		Rectangle r1=new Rectangle();
+		System.out.println( "Area of Rectangle is:"+ r1.area(10, 20, 0));
+	}
+}
+
+
+package Day3Assignment;
+
+public class Triangle extends Shape implements  Shape_Interface {
+
+Triangle(){};
+	
+	@Override
+	public float area(float len,float wi,float he) {
+		return ((len*he)/2);
+	}
+
+	public static void main(String args[]) {
+		Triangle t1=new Triangle();
+		System.out.println( "Area of Triangle  is:"+ t1.area(10, 20, 30));
+	}
+}
+
+
+package Day3Assignment;
+
+public class Square  extends Shape implements Shape_Interface{
+
+	Square(){};
+	
+	@Override
+	public float area(float len,float wi,float he) {
+		return len*len;
+	}
+
+	public static void main(String args[]) {
+		Square s1=new Square();
+		System.out.println( "Area of Square is:"+ s1.area(10, 0, 0));
+	}
+
+}
+
+
+3)
+
+package Day3Assignment;
+
+class MyOwnException  extends Exception{
+	 MyOwnException (String s){
+		 super(s);
+	 }
+
+}
+
+public class Salary_Exception extends Employee{
+
+	
+	
+	 public double salCal(double TA, double HRA, double DA) throws MyOwnException  { 
+		
+	   if((this.EmpSal+TA+HRA+DA)*12 <100000)
+		   throw new MyOwnException("Annual Salary is less than One Lakh");
+	   else
+		   System.out.println("Annual Salary is greater than One Lakh");
+	   return (this.EmpSal+TA+HRA+DA)*12 ;
+		   }
+
+	 
+	
+		   public static void main(String args[]) throws MyOwnException {
+			   Salary_Exception s1= new  Salary_Exception();
+			   System.out.println(s1.salCal(1000, 1000, 1000));
+			  
+		   }
+}
+
